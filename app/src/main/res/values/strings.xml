@@ -6,5 +6,10 @@
     <string name="login_btn_text">Iniciar sesión</string>
     <string name="no_internet_connection">No tiene conexión a internet, por favor actívela para continuar.</string>
     <string name="general_error">Hubo un error.</string>
+    <string name="grid_view_item_companies_txt">Empresas</string>
+    <string name="grid_view_item_customers_txt">Clientes</string>
+    <string name="grid_view_item_products_txt">Productos</string>
+    <string name="grid_view_item_sales_txt">Ventas</string>
+    <string name="grid_view_item_reports_txt">Reportes</string>
     <string name="empty_credentials">Ambos campos son necesarios.</string>
 </resources>
