@@ -19,7 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DashboardActivity"></activity>
+        <activity android:name=".DashboardActivity" />
+        <activity android:name=".CustomerActivity" />
+        <activity android:name=".CompanyActivity" />
+        <activity android:name=".ProductActivity" />
+        <activity android:name=".SaleActivity" />
+        <activity android:name=".ReportActivity"></activity>
     </application>
 
 </manifest>

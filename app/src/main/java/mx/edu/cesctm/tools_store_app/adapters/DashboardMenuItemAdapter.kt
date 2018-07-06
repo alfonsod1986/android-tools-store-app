@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import kotlinx.android.synthetic.main.dashboard_menu_entry.view.*
-import mx.edu.cesctm.tools_store_app.R
+import mx.edu.cesctm.tools_store_app.*
 import mx.edu.cesctm.tools_store_app.logic.DashboarMenuItem
+import mx.edu.cesctm.tools_store_app.utils.UiUtils
+
 
 class DashboardMenuItemAdapter: BaseAdapter{
     var dashboardMenuItemList = ArrayList<DashboarMenuItem>()
@@ -34,10 +36,21 @@ class DashboardMenuItemAdapter: BaseAdapter{
         val dashboardMenuItem = this.dashboardMenuItemList[position]
 
         var inflator = context!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        var dashboarMenuItemView = inflator.inflate(R.layout.dashboard_menu_entry, null)
-        dashboarMenuItemView.dashboard_iv_menu_entry.setImageResource(dashboardMenuItem.image!!)
-        dashboarMenuItemView.dashboard_txt_menu_entry.text = dashboardMenuItem.name!!
+        var dashboardMenuItemView = inflator.inflate(R.layout.dashboard_menu_entry, null)
+        dashboardMenuItemView.dashboard_iv_menu_entry.setImageResource(dashboardMenuItem.image!!)
+        dashboardMenuItemView.dashboard_txt_menu_entry.text = dashboardMenuItem.name!!
 
-        return dashboarMenuItemView
+        dashboardMenuItemView.setOnClickListener {
+            when(position){
+                0 -> UiUtils.startActivityWithoutExtras(context!!, CompanyActivity())
+                1 -> UiUtils.startActivityWithoutExtras(context!!, CustomerActivity())
+                2 -> UiUtils.startActivityWithoutExtras(context!!, ProductActivity())
+                3 -> UiUtils.startActivityWithoutExtras(context!!, SaleActivity())
+                4 -> UiUtils.startActivityWithoutExtras(context!!, ReportActivity())
+            }
+        }
+
+        return dashboardMenuItemView
     }
+
 }
