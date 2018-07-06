@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Tools Store App</string>
+    <string name="login_txt_app_name">Tools Store App</string>
+    <string name="login_username_hint">Nombre de usuario</string>
+    <string name="login_password_hint">Contraseña</string>
+    <string name="login_btn_text">Iniciar sesión</string>
+    <string name="no_internet_connection">No tiene conexión a internet, por favor actívela para continuar.</string>
+    <string name="general_error">Hubo un error.</string>
+    <string name="empty_credentials">Ambos campos son necesarios.</string>
+</resources>
