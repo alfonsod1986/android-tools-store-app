@@ -31,6 +31,7 @@ class ApiClient{
             if(this.retrofit == null){
                 this.retrofit = Retrofit.Builder()
                         .baseUrl(API_ENDPOINT)
+                        .client(httpClient)
                         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                         .addConverterFactory(GsonConverterFactory.create())
                         .build()
