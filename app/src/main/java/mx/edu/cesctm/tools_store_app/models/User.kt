@@ -46,4 +46,7 @@ data class User(
         }
     }
 
+    fun fullname(): String{
+        return "${this.mFirstName} ${this.mLastName} ${this.mSecondName}"
+    }
 }

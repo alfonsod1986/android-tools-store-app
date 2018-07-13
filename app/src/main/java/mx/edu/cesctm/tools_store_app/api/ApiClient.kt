@@ -1,11 +1,14 @@
 package mx.edu.cesctm.tools_store_app.api
 
 import android.content.Context
+import mx.edu.cesctm.tools_store_app.BuildConfig
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import java.util.logging.Level
 
 /**
  * @author Luis Alfonso Delgado Ballado
@@ -24,6 +27,9 @@ class ApiClient{
                 .connectTimeout(CONNECT_TIMEOUT, TimeUnit.MINUTES)
                 .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
                 .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
+                .addInterceptor(HttpLoggingInterceptor().apply {
+                    level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
+                })
                 .build()
 
         @JvmStatic

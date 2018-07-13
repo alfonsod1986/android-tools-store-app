@@ -5,30 +5,25 @@ import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
-import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.nav_header_main.*
 import mx.edu.cesctm.tools_store_app.adapters.DashboardMenuItemAdapter
 import mx.edu.cesctm.tools_store_app.logic.DashboarMenuItem
+import mx.edu.cesctm.tools_store_app.models.User
 
 class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     var adapter: DashboardMenuItemAdapter? = null
     var dashboarMenuItemList = ArrayList<DashboarMenuItem>()
+    var user:User? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
-        setSupportActionBar(toolbar)
 
-        val toggle = ActionBarDrawerToggle(
-                this, dashboard_drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        dashboard_drawer_layout.addDrawerListener(toggle)
-        toggle.syncState()
-
-        nav_view.setNavigationItemSelectedListener(this)
-
+        setupNavigationDrawer()
         setupDashboardMenu()
     }
 
@@ -64,4 +59,18 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         return true
     }
 
+    private fun setupNavigationDrawer(): Unit{
+        setSupportActionBar(toolbar)
+
+        val toggle = ActionBarDrawerToggle(
+                this, dashboard_drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        dashboard_drawer_layout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        nav_view_dashboard.setNavigationItemSelectedListener(this)
+
+        user = intent.getParcelableExtra("user")
+
+        val fullname:String = user!!.fullname()
+    }
 }

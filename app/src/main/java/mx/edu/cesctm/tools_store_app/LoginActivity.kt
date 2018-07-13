@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_login.*
@@ -70,6 +71,7 @@ class LoginActivity : AppCompatActivity() {
                                             // Obtenemos el mensaje que envía la api cuando el status es diferente de 200
                                             var message: String = JSONObject(result.errorBody()!!.string())
                                                     .getString("message")
+                                            Toast.makeText(this@LoginActivity, message, Toast.LENGTH_SHORT).show()
                                             UiUtils.showToast(this@LoginActivity, message)
                                             // Ocultamos el progress bar con spinner y mostramos el botón de iniciar sesión
                                             hideLoginButton(false)
